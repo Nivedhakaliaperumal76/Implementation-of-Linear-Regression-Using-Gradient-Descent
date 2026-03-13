@@ -17,13 +17,55 @@ To write a program to predict the profit of a city using the linear regression m
 ```
 /*
 Program to implement the linear regression using gradient descent.
-Developed by: 
-RegisterNumber:  
+Developed by: K. NIVEDHA
+RegisterNumber: 25013942 
 */
 ```
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Sample dataset
+x = np.array([1, 2, 3, 4, 5])
+y = np.array([2, 4, 5, 4, 5])
+
+# Initialize parameters
+m = 0  # slope
+b = 0  # intercept
+
+learning_rate = 0.01
+epochs = 1000
+n = len(x)
+
+# Gradient Descent
+for i in range(epochs):
+    
+    # Predicted values
+    y_pred = m * x + b
+    
+    # Calculate gradients
+    dm = (-2/n) * np.sum(x * (y - y_pred))
+    db = (-2/n) * np.sum(y - y_pred)
+    
+    # Update parameters
+    m = m - learning_rate * dm
+    b = b - learning_rate * db
+
+print("Slope (m):", m)
+print("Intercept (b):", b)
+
+# Plot results
+y_pred = m * x + b
+
+plt.scatter(x, y, color='blue', label="Actual Data")
+plt.plot(x, y_pred, color='red', label="Regression Line")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.legend()
+plt.show()
 
 ## Output:
-![linear regression using gradient descent](sam.png)
+<img width="1000" height="614" alt="image" src="https://github.com/user-attachments/assets/a69a8fe3-390d-485e-825d-aa0312d16c23" />
+
 
 
 ## Result:
